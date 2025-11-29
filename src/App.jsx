@@ -17,7 +17,9 @@ function App() {
     async function fetchCountries() {
       try {
         setLoading(true);
-        const response = await fetch("/api/countries");
+        // If using localhost uncomment below line
+        // const response = await fetch("/api/country")
+        const response = await fetch("https://www.apicountries.com/countries");
         const data = await response.json();
         setCountryData(data);
       } catch (error) {
