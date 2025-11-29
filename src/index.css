@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background: #000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+/* ===== FORM ===== */
+.form {
+  background: #272626;
+  padding: 25px;
+  border-radius: 5px;
+  border: 1px solid rgb(69, 69, 69);
+}
+
+.form-title {
+  margin-bottom: 20px;
+}
+
+.form-container {
+  min-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  margin: 10px 0;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 2px 0;
+  background-color: #121111;
+  border: 1px solid rgb(69, 69, 69);
+  outline: none;
+  color: white;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.submit-btn {
+  text-align: right;
+}
+
+.submit-btn button {
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 10px 15px;
+  background: #000;
+  outline: none;
+  border: 1px solid rgb(69, 69, 69);
+  border-radius: 5px;
+  font-family: inherit;
+  color: white;
+}
+
+/* ===== POPUP BACKGROUND ===== */
+.popup-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* ===== POPUP CARD ===== */
+.popup-card {
+  background: black;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+  color: gray;
+  border: 1px solid rgb(69, 69, 69);
+}
+
+.popup-card h2 {
+  margin-bottom: 20px;
+}
+
+.popup-card p {
+  margin: 5px 0;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  color: gray;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 700px) {
+  body {
+    padding: 10px;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .form-container {
+    min-width: 100% !important;
+    max-width: 100%;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .submit-btn button {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .popup-card {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .close-btn {
+    font-size: 18px;
+    top: 5px;
+    right: 8px;
+  }
+}
