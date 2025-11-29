@@ -12,26 +12,28 @@ function App() {
   const [showCard, setShowCard] = useState(false);
   const [submittedData, setSubmittedData] = useState(null);
 
-  // To fetch all country data to find countries, capital, and population
+  // Fetch country data from serverless API (works in dev and production)
   useEffect(() => {
     async function fetchCountries() {
       try {
         setLoading(true);
-        // If using localhost uncomment below line
-        // const response = await fetch("/api/country")
-        const response = await fetch("https://www.apicountries.com/countries");
+
+        // Call serverless API route
+        const response = await fetch("/api/countries");
         const data = await response.json();
+
         setCountryData(data);
       } catch (error) {
-        console.log(error);
+        console.error("Failed to fetch countries:", error);
       } finally {
         setLoading(false);
       }
     }
+
     fetchCountries();
   }, []);
 
-  // To get all country names to show for country select options
+  // Extract country names for the autocomplete dropdown
   useEffect(() => {
     if (countryData.length > 0) {
       const names = countryData.map((c) => c.name);
@@ -39,7 +41,7 @@ function App() {
     }
   }, [countryData]);
 
-  // To find capital and population of selected country
+  // Auto-fill capital and population based on selected country
   useEffect(() => {
     const selected = countryData.find((c) => c.name === country);
     if (selected) {
@@ -51,7 +53,7 @@ function App() {
     }
   }, [country, countryData]);
 
-  // Handles form submissions
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmittedData({
@@ -62,6 +64,8 @@ function App() {
       population,
     });
     setShowCard(true);
+
+    // Clear form
     setName("");
     setEmail("");
     setCountry("");
